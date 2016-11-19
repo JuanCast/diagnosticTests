@@ -2,7 +2,7 @@
 ### Diagnostic tests studies in R
 ##################################################################
 
-# Paso 1: Source + library  ####
+# Step 1: Source + library  ####
 library("e1071")
 library("dplyr")
 library("xlsx")
@@ -56,7 +56,7 @@ gs_read(ws = "workSheetName1", range = cell_rows(1:37))
 # raw Binary data
 
   # Factors
-datos$status <- cut(datos$PMNLA, c(0, 250, Inf), right=FALSE, labels=c(0:1))
+datos$status <- cut(datos$PMNLA, c(0, 250, Inf), right=FALSE, labels=c(0:1)) # 
 datos$status <- factor(datos$status)
 
 characters <- sapply(datos, is.character)
