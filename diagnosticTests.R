@@ -1,10 +1,8 @@
 ##################################################################
-### Desempeno Diagnostico de tiras reactivas en peritonitis 
-### espontanea
+### Diagnostic tests studies in R
 ##################################################################
 
 # Paso 1: Source + library  ####
-# https://goo.gl/6EKsFg
 library("e1071")
 library("dplyr")
 library("xlsx")
@@ -12,16 +10,15 @@ library("pastecs")
 library("googlesheets")
 library("OptimalCutpoints")
 suppressPackageStartupMessages(library("dplyr"))
-rm(datos)
-# (my_sheets <- gs_ls())
-tirasReactivas <- gs_title("tirasReactivas")  # registrar archivo
-gs_gs(tirasReactivas)  # registrar nuevamente
+(my_sheets <- gs_ls())  # get sheets from google sheets ( go to https://goo.gl/6EKsFg)
+tirasReactivas <- gs_title("fileTitle")  # register file
+# gs_gs(tirasReactivas)  # uncoment to register updated file
 gs_ws_ls(tirasReactivas)
-datos <- tirasReactivas %>%  # leer hoja 1
-gs_read(ws = "Hoja1", range = cell_rows(1:37))  # leer hoja 1 hasta la fila 31
-
+datos <- tirasReactivas %>%  # read desired rows in ws 1 
+gs_read(ws = "workSheetName1", range = cell_rows(1:37))
 
 # Paso 2: Clean data ####
+
 # https://goo.gl/mtKsZ8
 # View the first 6 rows of data
 # head(datos)
@@ -105,7 +102,7 @@ normalOutliers <- lapply(datos[num], boxplot.stats)
 # table(datos$interpretacion1, datos$status)
 #  table(datos$interpretacion2, datos$status)
 ########################################################### 
-### Resultados 
+### Reuslts 
 ########################################################### 
 
 # Paso 1: descriptivo ####
